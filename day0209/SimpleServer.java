@@ -6,33 +6,33 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * PORT¸¦ ¿­°í Á¢¼ÓÀÚ°¡ µé¾î¿À±â¸¦ ±â´Ù¸®´Â ÇÁ·Î±×·¥. => Server
+ * PORTë¥¼ ì—´ê³  ì ‘ì†ìê°€ ë“¤ì–´ì˜¤ê¸°ë¥¼ ê¸°ë‹¤ë¦¬ëŠ” í”„ë¡œê·¸ë¨. => Server
  * @author user
  */
 public class SimpleServer {
 	
 	public SimpleServer() throws IOException {
-		//1. ¼­¹ö¼ÒÄÏ »ı¼º. (PORT°¡ ¿­¸².) PORT´Â ¼±Á¡ÀÌ¾î¼­ ÀÌ Å¬·¡½º¸¦ µÎ¹ø ½ÇÇàÇÏ¸é ¿¡·¯.
+		//1. ì„œë²„ì†Œì¼“ ìƒì„±. (PORTê°€ ì—´ë¦¼.) PORTëŠ” ì„ ì ì´ì–´ì„œ ì´ í´ë˜ìŠ¤ë¥¼ ë‘ë²ˆ ì‹¤í–‰í•˜ë©´ ì—ëŸ¬.
 		ServerSocket server=null;
 		Socket client=null;
 		DataOutputStream dos=null;
 //		try {
 			server=new ServerSocket(65500);
-			System.out.println("¼­¹ö°¡µ¿ Áß....");
-			//3. Á¢¼ÓÀÚ°¡ µé¾î¿À¸é Á¢¼ÓÀÚ ¼ÒÄÏÀ» Çã°¡ÇÏ¿© ¹Ş´Â´Ù.
+			System.out.println("ì„œë²„ê°€ë™ ì¤‘....");
+			//3. ì ‘ì†ìê°€ ë“¤ì–´ì˜¤ë©´ ì ‘ì†ì ì†Œì¼“ì„ í—ˆê°€í•˜ì—¬ ë°›ëŠ”ë‹¤.
 			while( true ) {
 				client=server.accept();
-				System.out.println("Á¢¼ÓÀÚ ÀÖÀ½." + client.getInetAddress());
+				System.out.println("ì ‘ì†ì ìˆìŒ." + client.getInetAddress());
 				
-				//Á¢¼ÓÀÚ¿¡°Ô º¸³»ÁÙ ¸Ş½ÃÁö
-				String sendMsg="¾È³çÇÏ¼¼¿ä? ÀÌ ÆíÁö´Â ¿µ±¹¿¡¼­ ºÎÅÍ ½ÃÀÛ.. ³úÀıÆ¼ºñ -°­»ç";
+				//ì ‘ì†ìì—ê²Œ ë³´ë‚´ì¤„ ë©”ì‹œì§€
+				String sendMsg="ì•ˆë…•í•˜ì„¸ìš”? í™©ì„±ì¤€ì…ë‹ˆë‹¤!";
 				
-				//4.Á¢¼ÓÀÚ¿¡°Ô ¸Ş½ÃÁö¸¦  º¸³»±â À§ÇÑ ½ºÆ®¸²À» ¿¬°áÇÑ´Ù.
+				//4.ì ‘ì†ìì—ê²Œ ë©”ì‹œì§€ë¥¼  ë³´ë‚´ê¸° ìœ„í•œ ìŠ¤íŠ¸ë¦¼ì„ ì—°ê²°í•œë‹¤.
 				dos=new DataOutputStream(client.getOutputStream());
-				//5.½ºÆ®¸²¿¡ µ¥ÀÌÅÍ ¾²±â
-				dos.writeUTF(sendMsg);//ÇÑ±ÛÀÌ ÀÎÄÚµùµÈ´Ù.
-				//6. ¸ñÀûÁö·Î ºĞÃâ.
-				dos.flush();//½ºÆ®¸²ÀÇ ³»¿ëÀ» ¸ñÀûÁö·Î ºĞÃâ!
+				//5.ìŠ¤íŠ¸ë¦¼ì— ë°ì´í„° ì“°ê¸°
+				dos.writeUTF(sendMsg);//í•œê¸€ì´ ì¸ì½”ë”©ëœë‹¤.
+				//6. ëª©ì ì§€ë¡œ ë¶„ì¶œ.
+				dos.flush();//ìŠ¤íŠ¸ë¦¼ì˜ ë‚´ìš©ì„ ëª©ì ì§€ë¡œ ë¶„ì¶œ!
 			}//end while
 //		}finally {
 //			if( dos != null ) { dos.close(); }//end if
